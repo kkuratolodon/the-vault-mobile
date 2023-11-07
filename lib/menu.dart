@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class ShopItem {
+class InvItem {
   final String name;
   final IconData icon;
   final Color color;
-  ShopItem(this.name, this.icon, this.color);
+  InvItem(this.name, this.icon, this.color);
 }
 
 class MyHomePage extends StatelessWidget {
@@ -12,10 +12,10 @@ class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
 
   // Daftar item toko
-  final List<ShopItem> items = [
-    ShopItem("Lihat Item", Icons.checklist, const Color(0xFF004D40)),
-    ShopItem("Tambah Item", Icons.add_shopping_cart, const Color(0xFF311B92)),
-    ShopItem("Logout", Icons.logout, const Color(0xFF800000)),
+  final List<InvItem> items = [
+    InvItem("Lihat Item", Icons.checklist, const Color(0xFF004D40)),
+    InvItem("Tambah Item", Icons.add_shopping_cart, const Color(0xFF311B92)),
+    InvItem("Logout", Icons.logout, const Color(0xFF800000)),
   ];
 
   @override
@@ -47,8 +47,8 @@ class MyHomePage extends StatelessWidget {
                 mainAxisSpacing: 10,
                 crossAxisCount: 3,
                 shrinkWrap: true,
-                children: items.map((ShopItem item) {
-                  return ShopCard(item);
+                children: items.map((InvItem item) {
+                  return InvCard(item);
                 }).toList(),
               ),
             ],
@@ -59,16 +59,15 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-class ShopCard extends StatelessWidget {
-  final ShopItem item;
+class InvCard extends StatelessWidget {
+  final InvItem item;
 
-  const ShopCard(this.item, {super.key}); // Constructor
+  const InvCard(this.item, {super.key}); // Constructor
 
   @override
   Widget build(BuildContext context) {
     return Material(
       color: item.color,
-
       child: InkWell(
         // Area responsive terhadap sentuhan
         onTap: () {
