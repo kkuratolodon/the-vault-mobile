@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:the_vault_mobile/screens/itemlist_form.dart';
 import 'package:the_vault_mobile/screens/itemlist_page.dart';
 import 'package:the_vault_mobile/screens/menu.dart';
-import 'package:the_vault_mobile/screens/itemlist_form.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -27,7 +27,8 @@ class LeftDrawer extends StatelessWidget {
                   ),
                 ),
                 Padding(padding: EdgeInsets.all(13)),
-                Text("Catat koleksi albummu di sini!",
+                Text(
+                  "Catat koleksi albummu di sini!",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 19,
@@ -58,7 +59,7 @@ class LeftDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ItemFormPage(),
+                    builder: (context) => const ItemFormPage(),
                   ));
             },
           ),
@@ -70,7 +71,7 @@ class LeftDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ItemListPage(),
+                    builder: (context) => const ItemListPage(),
                   ));
             },
           ),
