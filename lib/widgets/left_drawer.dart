@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:the_vault_mobile/screens/itemlist_form.dart';
-import 'package:the_vault_mobile/screens/itemlist_page.dart';
+import 'package:the_vault_mobile/screens/item_list.dart';
 import 'package:the_vault_mobile/screens/menu.dart';
 
 class LeftDrawer extends StatelessWidget {
@@ -56,7 +56,7 @@ class LeftDrawer extends StatelessWidget {
             title: const Text('Tambah Item'),
             // Bagian redirection ke ShopFormPage
             onTap: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => const ItemFormPage(),
@@ -65,13 +65,13 @@ class LeftDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.checklist),
-            title: const Text('List Item'),
+            title: const Text('Daftar Item'),
             // Bagian redirection ke ShopFormPage
             onTap: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const ItemListPage(),
+                    builder: (context) => const ItemPage(),
                   ));
             },
           ),

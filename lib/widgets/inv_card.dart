@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
+import 'package:the_vault_mobile/screens/item_list.dart';
 import 'package:the_vault_mobile/screens/itemlist_form.dart';
-import 'package:the_vault_mobile/screens/itemlist_page.dart';
 import 'package:the_vault_mobile/screens/menu.dart';
+
+import '../screens/login.dart';
 
 class AlbumItem {
   String name;
@@ -9,7 +13,8 @@ class AlbumItem {
   String description;
   AlbumItem(this.name, this.amount, this.description);
 }
-List<AlbumItem>itemList = [];
+
+List<AlbumItem> itemList = [];
 
 class InvCard extends StatelessWidget {
   final InvItem item;
@@ -18,11 +23,12 @@ class InvCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Material(
       color: item.color,
       child: InkWell(
         // Area responsive terhadap sentuhan
-        onTap: () {
+        onTap: () async {
           // Memunculkan SnackBar ketika diklik
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
@@ -30,18 +36,36 @@ class InvCard extends StatelessWidget {
                 content: Text("Kamu telah menekan tombol ${item.name}!")));
           // Navigate ke route yang sesuai (tergantung jenis tombol)
           if (item.name == "Tambah Item") {
-            Navigator.pushReplacement(
+            Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const ItemFormPage(),
                 ));
-          }
-          else if (item.name == "Lihat Item") {
-            Navigator.pushReplacement(
+          } else if (item.name == "Lihat Item") {
+            Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ItemListPage(),
+                  builder: (context) => const ItemPage(),
                 ));
+          } else if (item.name == "Logout") {
+            final response = await request.logout(
+                // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
+                "https://muhammad-irfan25-tugas.pbp.cs.ui.ac.id/auth/logout/");
+            String message = response["message"];
+            if (response['status']) {
+              String uname = response["username"];
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("$message Sampai jumpa, $uname."),
+              ));
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginPage()),
+              );
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("$message"),
+              ));
+            }
           }
         },
         child: Container(
