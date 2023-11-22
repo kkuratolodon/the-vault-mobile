@@ -124,8 +124,8 @@ class _ItemFormPageState extends State<ItemFormPage> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    hintText: "Link Gambar Item",
-                    labelText: "Link Gambar Item",
+                    hintText: "Link Gambar Item (short url)",
+                    labelText: "Link Gambar Item (short url)",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),

@@ -40,7 +40,13 @@ class _ItemPageState extends State<ItemPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Item'),
+          title: const Center(
+            child: Text(
+              'List Item',
+            ),
+          ),
+          backgroundColor: Colors.deepPurple,
+          foregroundColor: Colors.white,
         ),
         drawer: const LeftDrawer(),
         body: FutureBuilder(
@@ -84,9 +90,6 @@ class _ItemPageState extends State<ItemPage> {
                                 const SizedBox(height: 10),
                                 Text(
                                     "Rating: ${snapshot.data![index].fields.rating}"),
-                                const SizedBox(height: 10),
-                                Text(
-                                    "Image Link: ${snapshot.data![index].fields.image}"),
                                 const SizedBox(height: 10),
                                 Text(
                                     "${snapshot.data![index].fields.description}"),

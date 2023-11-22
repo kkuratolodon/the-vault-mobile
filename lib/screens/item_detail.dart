@@ -21,7 +21,7 @@ class _DetailItemPageState extends State<DetailItemPage> {
             'Detail Item',
           ),
         ),
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.deepPurple,
         foregroundColor: Colors.white,
       ),
       drawer: const LeftDrawer(),
